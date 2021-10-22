@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="./assets/img/keyWeb.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css"/>
+</head>
+    <body>
+        <div id="toast"></div>
+
+        <div class="container">
+            <div class="text_main">
+                <p class="title_web">Wednesday, October 20, 2021 <span>Pre: Đoàn & Thành</span></p>
+                <h1 class="text_main__heading">Welcome to <br>  the winner's website</h1>
+                <div class="text_main__content">
+                    <p class="text_main__desc">Xin chúc mừng bạn! Bạn đã biểu hiện khá tốt qua các vòng thi và đạt được điểm số cao, tôi nghĩ cần phải thật nhạy bén và thông minh mới đạt được kết quả như vậy.</p>
+                    <p class="text_main__desc">Tôi mong rằng bạn sẽ hoàn thành những bước sau trước khi nhận quà:</p>
+                    <ul class="text_main__list">
+                        <li class="text_main__item"><i class="fas fa-desktop"></i> Sử dụng máy tính thay vì điện thoại để tối ưu hiển thị</li>
+                        <li class="text_main__item"><i class="fas fa-tablet-alt"></i> Bấm share màn hình để mọi người cùng chiêm ngưỡng món quà này</li>
+                        <li class="text_main__item"><i class="fas fa-key"></i> Món quà này cần có mật khẩu để mở, không chia sẻ nó cho bất kì ai</li>
+                    </ul>
+                </div>
+                <span class="text_main__btn js-btn">Click để nhận quà</span>
+            </div>
+            <div class="container_form">
+                <div class="box"></div>
+                <div class="box_1"></div>
+                <div class="box_2"></div>
+                <!-- jkdkfsk -->
+                <div class="box__form_anh js-form">
+                    <!-- ?Key of wef------------------------------------------------------------------ -->
+                    <img src="./assets/img/trinhKey.png" height="90%" alt="">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                </div>
+                <div class="box__form_text js-form">
+                    <div class="box__form_content">
+                        <form name="nhap">
+                            <input class="how" name="how" type="text" placeholder="Số bông hoa trên các hộp quà?" required>
+                            <input class="pass" name="pass" type="password" placeholder="Nhập mật khẩu" required>
+                            <input class="enter js-enter" type="reset" name=""value="OK">
+                        </form>
+                    </div>
+                </div>
+                <div class="box_img">
+                    <img class="anh_mot" src="./assets/img/Qua2.png" width="100%" alt="">
+                    <img class="anh_hai" src="./assets/img/Qua.png" width="100%" alt="">
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        // jkzdlfhdsjkfhsdjfhhdskjfsdk
+        var openForm = document.querySelector('.js-btn');
+        var allForms = document.querySelectorAll('.js-form')
+        var dem = 0;
+        function showForm() {
+            if(dem == 0) {
+                for (const allForm of allForms) {
+                allForm.classList.add('open');
+                }
+                dem += 1;
+                openForm.innerHTML = "Trở lại trang chủ";
+            } else {
+                for (const allForm of allForms) {
+                allForm.classList.remove('open');
+                }
+                dem -= 1;
+                openForm.innerHTML = "Click để nhận quà";
+            }
+        }
+        openForm.addEventListener('click', showForm);
+        
+        
+
+        var enter = document.querySelector('.js-enter');
+        var testa = 0;
+        function test() {
+            var how = parseInt(window.document.nhap.how.value);
+            var pass = window.document.nhap.pass.value;
+            // <!-- ?Key of wef------------------------------------------------------------------ -->
+            var trinhKey = "Trinh16072002";
+            var nhanKey = "Nhan30112002";
+            var thuyKey = "Thuy19122002";
+            var lanKey = "Lan23022002";
+            var maiKey = "Mai28042002";
+
+            if (how == 0 && pass == trinhKey) {
+                window.location = "https://youtu.be/L2R9ZxgJ3Mw";
+            } else if (how != 0 && pass == trinhKey) {
+                toast({
+                desc: 'Bạn đã nhập sai câu số 1. Vui lòng nhập lại!',
+                duration: 3000
+                });
+            } else if (how == 0 && pass != trinhKey) {
+                toast({
+                desc: 'Bạn đã nhập sai password. Vui lòng nhập lại!',
+                duration: 3000
+                });
+            }
+            else {
+                toast({
+                desc: 'Bạn đã nhập sai toàn bộ. Vui lòng nhập lại!',
+                duration: 3000
+                });
+            }
+        }
+        enter.addEventListener('click', test);
+        console.log(testa);
+
+        function toast({
+            desc = '', 
+            duration = 3000
+        }) {
+            const main = document.getElementById('toast');
+            if (main) {
+                const toast = document.createElement('div');
+
+                const auto = setTimeout(function() {
+                    main.removeChild(toast);
+                }, duration + 1000);
+
+                toast.onclick = function(e) {
+                    if (e.target.closest('.toast__close')) {
+                        main.removeChild(toast);
+                        clearTimeout(auto);
+                    }
+                }
+
+                const delay = (duration / 1000).toFixed(2);
+                toast.classList.add('toast');
+                toast.style.animation = `0.3s slideIn linear, fadeOut linear 1s ${delay}s`;
+                toast.innerHTML = `
+                <div class="toast__icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="toast__body">
+                    <h3 class="toast__body-heading">Wrong</h3>
+                    <p class="toast__body-desc">${desc}</p>
+                </div>
+                <div class="toast__close">
+                    <i class="fas fa-times"></i>
+                </div>`;
+                main.appendChild(toast);
+            }
+        }
+        
+    </script>
+</html>
